@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="form-group col-md-7 mb-3"></div>
-          <div class="form-group col-md-4 mb-3">
+          <div class="form-group col-md-6 mb-3">
             <label class="form-label">Tecnología</label>
             <div class="form-group">
               <select
@@ -51,30 +51,13 @@
             <label class="form-label">Responsable</label>
             <div class="form-group">
               <select
-                  formControlName="tipoConsulta"
+                  formControlName="responsable"
                   class="form-control"
                 >
-                <option *ngFor="let servicio of serviciosClinica" [value]="servicio.codigo">
-                  {{ servicio.nombre}}
+                <option *ngFor="let respon of responsables" [value]="respon.codigo">
+                  {{ respon.nombre}}
                 </option>
               </select>
-            </div>
-          </div>
-          <div class="form-group col-md-2 mb-3">
-            <label class="form-label">Cantidad</label>
-            <div class="form-group">
-              <input
-                type="number"
-                formControlName="cantidad"
-                class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f['cantidad'].errors }"
-              />
-              <div *ngIf="submitted && f['cantidad'].errors" class="invalid-feedback">
-                <div *ngIf="f['cantidad'].errors['required']">* Campo requerido</div>
-              </div>
-              <div *ngIf="submitted && f['cantidad'].errors" class="invalid-feedback">
-                <div *ngIf="f['cantidad'].errors['min']">* Cantidad mayor a 0</div>
-              </div>
             </div>
           </div>
           <div class="form-group col-md-3 mb-3">
@@ -114,8 +97,6 @@
                   <th scope="col">Fecha<br/>Hora</th>
                   <th scope="col">Tecnología</th>
                   <th scope="col">Profesional</th>
-                  <th scope="col">Valor<br/>Unitario</th>
-                  <th scope="col">Cantidad</th>
                   <th scope="col">Valor<br/>Total</th>
                   <th>acción</th>
               </tr>
@@ -127,9 +108,7 @@
             <tr *ngFor="let proc of otrosArray" class="text-center">
                 <td class="align-middle">{{proc.fecha | date: 'dd/MM/yyyy'}}<br/>{{proc.hora}}</td>
                 <td class="align-middle">{{proc.tecnologia}}<br/>{{proc.nomTecnologia}}</td>
-                <td class="align-middle">{{proc.tipoDocumentoMedico}}<br/>{{proc.documentoMedico}}</td>
-                <td class="align-middle">{{proc.valorunit | currency}}</td>
-                <td class="align-middle">{{proc.cantidad}}</td>
+                <td class="align-middle">{{proc.tipoDocumentoMedico}}-{{proc.documentoMedico}}<br/>{{proc.nombreMedico}}</td>
                 <td class="align-middle">{{proc.valor | currency}}</td>
                 <td class="align-middle text-center">
                   <button type="button" (click)="openModal(myModalContent, proc.id)" class="btn btn-success" data-bs-toggle="tooltip" title="Editar"><b><i class="bi bi-pencil"></i></b></button>
@@ -187,7 +166,7 @@
               </div>
             </div>
             <div class="form-group col-md-7 mb-3"></div>
-            <div class="form-group col-md-4 mb-3">
+            <div class="form-group col-md-6 mb-3">
               <label class="form-label">Tecnología</label>
               <div class="form-group">
                 <select
@@ -201,37 +180,20 @@
               </div>
             </div>
             <div class="form-group col-md-3 mb-3">
-              <label class="form-label">Tipo de consulta</label>
+              <label class="form-label">Responsable</label>
               <div class="form-group">
                 <select
                     formControlName="tipoModal"
                     class="form-control"
                   >
-                  <option *ngFor="let servicio of serviciosClinica" [value]="servicio.codigo">
-                    {{ servicio.nombre}}
+                  <option *ngFor="let respon of responsables" [value]="respon.codigo">
+                    {{ respon.nombre}}
                   </option>
                 </select>
               </div>
             </div>
-            <div class="form-group col-md-2 mb-3">
-              <label class="form-label">Cantidad</label>
-              <div class="form-group">
-                <input
-                  type="number"
-                  formControlName="cantidadModal"
-                  class="form-control"
-                  [ngClass]="{ 'is-invalid': submitted && g['cantidadModal'].errors }"
-                />
-                <div *ngIf="submitted && g['cantidadModal'].errors" class="invalid-feedback">
-                  <div *ngIf="g['cantidadModal'].errors['required']">* Campo requerido</div>
-                </div>
-                <div *ngIf="submitted && g['cantidadModal'].errors" class="invalid-feedback">
-                  <div *ngIf="g['cantidadModal'].errors['min']">* Cantidad mayor a 0</div>
-                </div>
-              </div>
-            </div>
             <div class="form-group col-md-3 mb-3">
-              <label class="form-label">Valor unitario</label>
+              <label class="form-label">Valor</label>
               <div class="form-group">
                 <input
                   type="number"

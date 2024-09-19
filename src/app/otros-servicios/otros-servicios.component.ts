@@ -16,16 +16,14 @@ export class OtrosServiciosComponent implements OnInit {
     fecha: new FormGroup(""),
     hora: new FormGroup(""),
     tecnologia: new FormGroup(""),
-    cantidad: new FormGroup(""),
     valorunit: new FormGroup(""),
-    tipoConsulta: new FormGroup('')
+    responsable: new FormGroup('')
   });
 
   formModal: FormGroup = new FormGroup({
     fechaModal: new FormGroup(""),
     horaModal: new FormGroup(""),
     tecnologiaModal: new FormGroup(""),
-    cantidadModal: new FormGroup(""),
     valorunitModal: new FormGroup(""),
     tipoModal: new FormGroup('')
   });
@@ -35,8 +33,9 @@ export class OtrosServiciosComponent implements OnInit {
   otrosArray:any[] = [];
   lastId = 0;
   submitted = false;
-  serviciosClinica: any[] = [];
+  responsables: any[] = [];
   tecnologia: any[] = [];
+  nombreMedico = '';
   documentoMedico = '';
   tipoDocumentoMedico = '';
   items = 0;
@@ -52,13 +51,12 @@ export class OtrosServiciosComponent implements OnInit {
     this.form = this.formBuilder.group({
       fecha: [this.currentDate, [Validators.required]],
       hora: [this.currentTime, [Validators.required]],
-      tecnologia: ['TAB', [Validators.required]],
-      cantidad: ['1', [Validators.required, Validators.min(1)]],
+      tecnologia: ['601T01', [Validators.required]],
       valorunit: ['0', [Validators.required, Validators.min(1)]],
-      tipoConsulta: ['311', []]
+      responsable: ['1', []]
     });
     this.dataGeneralService.getData().subscribe(data => {
-      this.serviciosClinica = data.servicios;
+      this.responsables = data.personal;
       this.tecnologia = data.tecnologia;
     });
   }
@@ -68,12 +66,15 @@ export class OtrosServiciosComponent implements OnInit {
 
   // Busca el médico del procedimiento
   searchMD(cod:number): void {
+    this.nombreMedico = "";
     this.documentoMedico = "";
     this.tipoDocumentoMedico = "";
 
-    const val = this.serviciosClinica.filter(servicio => servicio.codigo === cod);
-    this.documentoMedico = val[0].medico.documento;
-    this.tipoDocumentoMedico = val[0].medico.tipoDocumento;
+    const val = this.responsables.filter(personal => personal.codigo == cod);
+
+    this.nombreMedico = val[0].nombre;
+    this.documentoMedico = val[0].documento;
+    this.tipoDocumentoMedico = val[0].tipoDocumento;
   }
 
   // Busca un elemento del arreglo de procedimientos por el id
@@ -91,22 +92,22 @@ export class OtrosServiciosComponent implements OnInit {
       return;
     }
     this.lastId++;
-    let valorOutput = this.form.value.valorunit*this.form.value.cantidad;
 
-    this.searchMD(this.form.value.tipoConsulta);
-    this.totalValue += Number(valorOutput);
+    this.searchMD(this.form.value.responsable);
+    this.totalValue += Number(this.form.value.valorunit);
     let newService = {
       id: this.lastId,
       fecha: this.form.value.fecha,
       hora: this.form.value.hora,
       tecnologia: this.form.value.tecnologia,
       nomTecnologia: this.searchTech(this.form.value.tecnologia),
-      tipoConsulta: this.form.value.tipoConsulta,
-      cantidad: this.form.value.cantidad,
+      tipoConsulta: this.form.value.responsable,
+      cantidad: 1,
+      nombreMedico: this.nombreMedico,
       documentoMedico: this.documentoMedico,
       tipoDocumentoMedico: this.tipoDocumentoMedico,
       valorunit: this.form.value.valorunit,
-      valor: valorOutput
+      valor: this.form.value.valorunit
     };
     this.otrosArray.push(newService);
     this.items= this.otrosArray.length;
@@ -135,7 +136,6 @@ export class OtrosServiciosComponent implements OnInit {
       fechaModal: [val[0].fecha, [Validators.required]],
       horaModal: [val[0].hora, [Validators.required]],
       tecnologiaModal: [val[0].tecnologia, [Validators.required]],
-      cantidadModal: [val[0].cantidad, [Validators.required, Validators.min(1)]],
       valorunitModal: [val[0].valorunit, [Validators.required, Validators.min(1)]],
       tipoModal: [val[0].tipoConsulta, []],
       id: [id]
@@ -154,17 +154,17 @@ export class OtrosServiciosComponent implements OnInit {
     this.otrosArray = this.otrosArray.map(proc => {
       if (proc.id === this.formModal.value.id) {
         this.totalValue -= Number(proc.valor);
-        let vrtot = Number(this.formModal.value.valorunitModal)*Number(this.formModal.value.cantidadModal);
-        this.totalValue += Number(vrtot);
+        this.totalValue += Number(this.formModal.value.valorunitModal);
         return {
           ...proc,
           fecha: this.formModal.value.fechaModal,
           hora: this.formModal.value.horaModal,
           tecnologia: this.formModal.value.tecnologiaModal,
           nomTecnologia: this.searchTech(this.formModal.value.tecnologiaModal),
-          cantidad: this.formModal.value.cantidadModal,
+          cantidad: 1,
           valorunit: this.formModal.value.valorunitModal,
-          valor: vrtot,
+          valor: this.formModal.value.valorunitModal,
+          nombreMedico: this.nombreMedico,
           documentoMedico: this.documentoMedico,
           tipoDocumentoMedico: this.tipoDocumentoMedico
         }

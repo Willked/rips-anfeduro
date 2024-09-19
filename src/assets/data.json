@@ -7,53 +7,82 @@
     }
   ],
   "servicios": [
-    {
-      "codigo": "211",
-      "nombre": "ENERMERA PROFESIONAL",
-      "medico":{
-        "tipoDocumento": "CC",
-        "documento": "24681012"
-      }
-    },
-    {
-      "codigo": "311",
-      "nombre": "AUXILIAR DE ENFERMERIA",
-      "medico":{
-        "tipoDocumento": "CC",
-        "documento": "135791113"
-      }
-    }
   ],
   "consultas":[
-    {
-      "codigo": "890703",
-      "nombre": "CONSULTA URGENCIA POR ODONTOLOGIA GENERAL - 890703",
-      "precio": "36800"
-    },
-    {
-      "codigo": "890303",
-      "nombre": "CONSULTA CONTROL POR ODONTOLOGIA GENERAL - 890303",
-      "precio": "29300"
-    }
   ],
   "diagnosticos":[
-    {
-      "codigo": "K040",
-      "nombre": "Pulpitis"
-    }
   ],
   "tecnologia":[
     {
-      "codigo": "TAB",
-      "nombre": "TRASLADO ASISTENCIAL BASICO"
+      "codigo": "601T01",
+      "nombre": "TRASLADO ASISTENCIAL BASICO TERRESTRE PRIMARIO"
     },
     {
-      "codigo": "TAM",
-      "nombre": "TRASLADO ASISTENCIAL MEDICALIZADO"
+      "codigo": "601T02",
+      "nombre": "TRASLADO ASISTENCIAL BÁSICO TERRESTRE SECUNDARIO"
     },
     {
-      "codigo": "OTT",
-      "nombre": "OTRO TIPO DE TRASLADO"
+      "codigo": "602T01",
+      "nombre": "TRASLADO ASISTENCIAL MEDICALIZADO TERRESTRE PRIMARIO"
+    },
+    {
+      "codigo": "602T02",
+      "nombre": "TRASLADO ASISTENCIAL MEDICALIZADO TERRESTRE SECUNDARIO"
+    },
+    {
+      "codigo": "602T01",
+      "nombre": "TRASLADO NEONATAL MEDICALIZADO"
+    }
+  ],
+  "personal":[
+    {
+      "tipoDocumento": "CC",
+      "documento": "1054555416",
+      "nombre": "CLAUDIA MARIBETH ORTIZ POSAS",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 1
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "1007400200",
+      "nombre": "MARIA FERNANDA LUJAN BORJA",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 2
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "1073326686",
+      "nombre": "DIEGO ALEJANDRO ARAQUE HORTUA",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 3
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "1054542060",
+      "nombre": "KAROL MAYERLY GARCIA DAVILA",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 4
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "1054549489",
+      "nombre": "MARBY YANETHE OLAYA",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 5
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "1054566724",
+      "nombre": "DANNYS NATALIA MARIN LOPEZ",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 6
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "77096564",
+      "nombre": "JOSE ANGEL ECHAVEZ ROMERO",
+      "cargo": "MEDICO GENERAL",
+      "codigo": 7
     }
   ]
 }
