@@ -79,10 +79,17 @@
     },
     {
       "tipoDocumento": "CC",
+      "documento": "1128624017",
+      "nombre": "KAREN LORENA GALVIS RIVERA",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 7
+    },
+    {
+      "tipoDocumento": "CC",
       "documento": "77096564",
       "nombre": "JOSE ANGEL ECHAVEZ ROMERO",
       "cargo": "MEDICO GENERAL",
-      "codigo": 7
+      "codigo": 8
     }
   ]
 }
