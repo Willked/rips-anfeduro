@@ -1,18 +1,15 @@
 {
-  "clinica":[
+  "clinica": [
     {
       "nombre": "INVERSIONES ANFEDURO SAS",
       "nit": "900715646",
       "codigo": "173800255601"
     }
   ],
-  "servicios": [
-  ],
-  "consultas":[
-  ],
-  "diagnosticos":[
-  ],
-  "tecnologia":[
+  "servicios": [],
+  "consultas": [],
+  "diagnosticos": [],
+  "tecnologia": [
     {
       "codigo": "601T01",
       "nombre": "TRASLADO ASISTENCIAL BASICO TERRESTRE PRIMARIO"
@@ -34,7 +31,7 @@
       "nombre": "TRASLADO NEONATAL MEDICALIZADO"
     }
   ],
-  "personal":[
+  "personal": [
     {
       "tipoDocumento": "CC",
       "documento": "1054555416",
@@ -86,10 +83,24 @@
     },
     {
       "tipoDocumento": "CC",
-      "documento": "77096564",
-      "nombre": "JOSE ANGEL ECHAVEZ ROMERO",
-      "cargo": "MEDICO GENERAL",
+      "documento": "1053775840",
+      "nombre": "MANUEL JOSÉ DUSSAN ROJAS",
+      "cargo": "AUXILIAR DE ENFERMERIA",
       "codigo": 8
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "1054540727",
+      "nombre": "MARIA JOSÉ SAYAGO HERNÁNDEZ",
+      "cargo": "AUXILIAR DE ENFERMERIA",
+      "codigo": 9
+    },
+    {
+      "tipoDocumento": "CC",
+      "documento": "77096564",
+      "nombre": "DR JOSE ANGEL ECHAVEZ ROMERO",
+      "cargo": "MEDICO GENERAL",
+      "codigo": 10
     }
   ]
 }
